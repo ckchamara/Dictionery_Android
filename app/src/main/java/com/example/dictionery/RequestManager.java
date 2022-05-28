@@ -19,7 +19,7 @@ import retrofit2.http.Path;
 public class RequestManager {
     Context context;
     Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("https://api.dictionaryapi.dev/api/v2")
+            .baseUrl("https://api.dictionaryapi.dev/api/v2/")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 

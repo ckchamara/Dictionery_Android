@@ -42,6 +42,9 @@ public class DefinitionAdapter extends RecyclerView.Adapter<DefinitionViewHolder
 
         holder.textview_synonyms.setText(synonyms);
         holder.textview_antonyms.setText(antonyms);
+
+        holder.textview_synonyms.setSelected(true);
+        holder.textview_antonyms.setSelected(true);
     }
 
     @Override

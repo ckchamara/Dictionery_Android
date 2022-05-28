@@ -1,6 +1,7 @@
 package com.example.dictionery.Adapters;
 
 import android.content.Context;
+import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.view.LayoutInflater;
@@ -40,11 +41,14 @@ public class PhoneticsAdapter extends RecyclerView.Adapter<PhoneticViewHolder> {
             public void onClick(View view) {
                 MediaPlayer player = new MediaPlayer();
                 try {
-                    player.setAudioStreamType(AudioManager.STREAM_MUSIC);
-                    player.setDataSource("https:"+phoneticsList.get(position).getAudio());
+                    player.setAudioAttributes(new AudioAttributes.Builder()
+                            .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
+                            .build());
+                    player.setDataSource(phoneticsList.get(position).getAudio());
+//                    player.setDataSource("https://api.dictionaryapi.dev/media/pronunciations/en/hello-au.mp3");
                     player.prepare();
                     player.start();
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                     Toast.makeText(context, "Could't Play Audio..!", Toast.LENGTH_SHORT).show();
                 }
